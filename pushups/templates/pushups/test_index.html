@@ -1,0 +1,13 @@
+<html>
+<head>
+	<title>Send a text</title>
+</head>
+<body>
+	<form action="{% url 'pushups:test_submit' %}" method="post">
+		{% csrf_token %}
+		Enter the recipient's phone number: <input type="text" name="phone_number"><br>
+		Enter your message:  <input type="text" name="message"><br>
+		<input type="submit" value="Send">
+	</form>
+</body>
+</html>
