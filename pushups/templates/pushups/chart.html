@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Pushups', 'Hours per Day'],
+          ['Monday',     11],
+          ['Tuesday',      2],
+          ['Wednesday',  2],
+          ['Thursday', 2],
+          ['Friday',    7]
+        ]);
+
+        var options = {
+          title: 'Pushups',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="donutchart" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
