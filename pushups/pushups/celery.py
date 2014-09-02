@@ -18,13 +18,6 @@ app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 class Messager:
 	def __init__(self):
-		#cred_file = open('pushups/twilio_creds.txt')
-		#self.accountSID = cred_file.readline().rstrip()
-		#self.authenticationToken = cred_file.readline().rstrip()
-		#self.accountSID = str(os.environ.get('TWILIO_SID'))
-		#print self.accountSID
-		#self.authenticationToken = str(os.environ.get('TWILIO_TOKEN'))
-		#print self.authenticationToken
 		self.accountSID = ""
 		self.authenticationToken = ""
 		self.twilioRestClient = TwilioRestClient(self.accountSID, self.authenticationToken)
