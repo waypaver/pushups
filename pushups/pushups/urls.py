@@ -14,4 +14,8 @@ urlpatterns = patterns('',
   url(r'^accounts/logout/$', 'pushups.views.logout'),
   url(r'^accounts/loggedin/$', 'pushups.views.loggedin'),
   url(r'^accounts/invalid/$', 'pushups.views.invalid_login'),
+
+  #registration urls
+  url(r'^accounts/register/$', 'pushups.views.register_user'),
+  url(r'^accounts/register_success/$', 'pushups.views.register_success'),
 )
