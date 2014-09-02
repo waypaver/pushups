@@ -33,11 +33,9 @@ class Messager:
 	def sendMessage(self, recipientNumber, message):
 		self.twilioRestClient.messages.create(to="+1" + str(recipientNumber), from_="+14234029660", body=message)
 
-@app.task(bind=True)
-def debug_task(self):
-    print('Request: {0!r}'.format(self.request))
-
+#In project directory, run this command in the terminal:
 #python manage.py celeryd --loglevel=DEBUG  -E -B -c 1
+
 @celery.decorators.periodic_task(run_every=datetime.timedelta(minutes=1))
 def send_sms():
 	messenger = Messager()
