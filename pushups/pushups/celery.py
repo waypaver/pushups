@@ -21,8 +21,6 @@ class Messager:
 		#cred_file = open('pushups/twilio_creds.txt')
 		#self.accountSID = cred_file.readline().rstrip()
 		#self.authenticationToken = cred_file.readline().rstrip()
-		#os.environ['TWILIO_SID'] = "ACb0757d158c432cbd06f53e228a9693a9"
-		#os.environ['TWILIO_TOKEN'] = "6bef01d2def1978f9d2bea7c15aa8a17"
 		#self.accountSID = str(os.environ.get('TWILIO_SID'))
 		#print self.accountSID
 		#self.authenticationToken = str(os.environ.get('TWILIO_TOKEN'))
