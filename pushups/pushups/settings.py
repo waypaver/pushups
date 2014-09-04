@@ -10,6 +10,9 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import djcelery
+djcelery.setup_loader()
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'))
@@ -27,6 +30,11 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
+CELERY_RESULT_BACKEND='djcelery.backends.cache:CacheBackend'
+BROKER_URL = 'django://'
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+
 
 # Application definition
 
@@ -37,6 +45,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'kombu.transport.django', 
+    'djcelery',
+    #'mycelery',
 )
 
 MIDDLEWARE_CLASSES = (
