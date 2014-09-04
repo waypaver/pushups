@@ -5,7 +5,6 @@ from django.contrib.auth.views import login, logout
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	#url(r'^', views.test_index, name='test_index'),
 	url(r'^admin/', include(admin.site.urls)),
 
   #user auth urls
