@@ -6,7 +6,6 @@ from django.core.context_processors import csrf
 
 def test_index(request):
 	return render(request, 'test_index.html')
-	#return HttpResponse("Woo!")
 
 	
 #signin/login views
