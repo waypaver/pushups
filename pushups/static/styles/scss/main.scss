@@ -1,0 +1,64 @@
+@import 'fontface';
+@import 'browser-prefix-mixin';
+@include fontFace('PixelDust','font/pixeldu');
+@include fontFace('PixelHour','font/PixelHour');
+
+$primary-font-color: #02d602;
+$background-color-primary: #111111;
+
+body {
+	background-color: $background-color-primary;
+	font-size: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	color: $primary-font-color;
+	text-align: center;
+	font-family: 'PixelDust';
+}
+
+#sign-in-button {
+	position: fixed;
+	bottom: 91.5%;
+	left: 91%;
+	// margin-left: 45px;
+}
+
+.tagline {
+	h1 {
+		font-size: 3rem;
+		margin-bottom: -170px;
+	}
+}
+
+.title {
+	font-size: 5rem;
+	margin-top: -70px;
+	h1 {
+		font-family: 'PixelHour';
+	}
+}
+
+.start-group {
+	font-size: 2em;
+		h1, h3, h5 {
+			line-height: 0%;
+		}
+		h3 {
+			letter-spacing: 3px;
+		}
+}
+
+.scroll-down {
+	position: absolute;
+	bottom: 0px;
+	left: 50%;
+	width: 200px;
+	margin-left: -100px;
+	color: white;
+}
+
+#chevron {
+	@include vendor-prefix(transform, rotate(180deg));
+	margin-top: -30px;
+}
