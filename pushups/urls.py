@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='test_index'),
     url(r'^admin/', include(admin.site.urls)),
 
+    url(r'^sms/$', views.sms),
 )
