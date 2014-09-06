@@ -1,7 +1,19 @@
-@import 'fontface';
-@import 'browser-prefix-mixin';
-@include fontFace('PixelDust','font/pixeldu');
-@include fontFace('PixelHour','font/PixelHour');
+@mixin fontFace($family,$src,$weight: normal,$style: normal) {
+	@font-face {
+		font-family: $family;
+		src: url('../../#{$src}.eot'); // IE9 compat
+		src: url('../../#{$src}.eot?#iefix') format('embedded-opentype'), // IE8 and below
+			url('../../#{$src}.woff') format('woff'), // standards
+			url('../../#{$src}.ttf') format('truetype'), // Safari, Android, iOS
+			url('../../#{$src}.svg##{$family}') format('svg'); // legacy iOS
+
+		font-style: $style;
+		font-weight: $weight;
+	}
+}
+
+@include fontFace('PixelDust','/fonts/pixeldu');
+@include fontFace('PixelHour','/fonts/PixelHour');
 
 $primary-font-color: #02d602;
 $background-color-primary: #111111;
@@ -59,6 +71,6 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 #chevron {
-	@include vendor-prefix(transform, rotate(180deg));
+	transform: 180(deg);
 	margin-top: -30px;
 }

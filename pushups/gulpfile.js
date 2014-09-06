@@ -1,6 +1,6 @@
 /*!
  * gulp
- * $ npm install gulp-ignore express gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev
+ * $ npm install express gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev
  */
 
 // Load plugins
@@ -16,7 +16,6 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
-    ignore = require('gulp-ignore'),
     del = require('del');
 
 // Styles
@@ -44,7 +43,7 @@ gulp.task('cssven', function() {
 
 // Scripts
 gulp.task('js', function() {
-  return gulp.src('assets/js/*.js', '!/assets/js/vendor/**')
+  return gulp.src('assets/js/*.js')
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))
@@ -91,17 +90,17 @@ gulp.task('default', ['clean'], function() {
 // Watch
 gulp.task('watch', function() {
 
-  // Watch .scss files
+  // Watch my .scss files
   gulp.watch('assets/styles/scss/*.scss', ['css']);
 
   //Watch vendor styles
   gulp.watch('assets/styles/css/vendor/*.css', 'assets/styles/scss/vendor/*.scss', ['cssven']);
 
-  // Watch .js files
+  // Watch my .js files
   gulp.watch('assets/scripts/**/*.js', ['js']);
 
   // Watch .js vendor files
-  gulp.watch('assets/scripts/vendor/**', ['jsven']);
+  gulp.watch('assets/scripts/vendor/*.js', ['jsven']);
 
   // Watch image files
   gulp.watch('assets/images/**/*', ['img']);
