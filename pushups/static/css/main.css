@@ -12,6 +12,14 @@
   font-style: normal;
   font-weight: normal; }
 
+button.button {
+  background-color: transparent;
+  border-color: #02d602;
+  font-family: 'PixelDust'; }
+  button.button:hover {
+    background-color: #02d602;
+    color: black; }
+
 body {
   background-color: #111111;
   font-size: 100%; }
@@ -24,7 +32,8 @@ h1, h2, h3, h4, h5, h6, p {
 #sign-in-button {
   position: fixed;
   bottom: 91.5%;
-  left: 91%; }
+  left: 91%;
+  margin-left: 2%; }
 
 .tagline h1 {
   font-size: 3rem;

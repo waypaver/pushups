@@ -10,7 +10,7 @@
 $include-html-button-classes: $include-html-classes !default;
 
 // We use these to build padding for buttons.
-$button-tny: rem-calc(10) !default;
+$button-tny: rem-calc(9) !default;
 $button-sml: rem-calc(14) !default;
 $button-med: rem-calc(16) !default;
 $button-lrg: rem-calc(18) !default;
@@ -23,7 +23,7 @@ $button-margin-bottom: rem-calc(20) !default;
 $button-font-family: $body-font-family !default;
 $button-font-color: $white !default;
 $button-font-color-alt: $oil !default;
-$button-font-tny: rem-calc(11) !default;
+$button-font-tny: rem-calc(12) !default;
 $button-font-sml: rem-calc(13) !default;
 $button-font-med: rem-calc(16) !default;
 $button-font-lrg: rem-calc(20) !default;
@@ -34,7 +34,7 @@ $button-font-align: center !default;
 $button-function-factor: -20% !default;
 
 // We use these to control button border styles.
-$button-border-width: 0px !default;
+$button-border-width: 1px !default;
 $button-border-style: solid !default;
 $button-bg-color: $primary-color !default;
 $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor) !default;

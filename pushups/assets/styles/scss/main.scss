@@ -15,8 +15,23 @@
 @include fontFace('PixelDust','/fonts/pixeldu');
 @include fontFace('PixelHour','/fonts/PixelHour');
 
-$primary-font-color: #02d602;
+//General
 $background-color-primary: #111111;
+
+//Font
+$primary-font-color: #02d602;
+$body-font: 'PixelDust';
+$header-font: 'PixelHour';
+
+button.button {
+	background-color: transparent;
+	border-color: $primary-font-color;
+	font-family: $body-font;
+	&:hover {
+		background-color: $primary-font-color;
+		color: black;
+	}
+}
 
 body {
 	background-color: $background-color-primary;
@@ -26,14 +41,14 @@ body {
 h1, h2, h3, h4, h5, h6, p {
 	color: $primary-font-color;
 	text-align: center;
-	font-family: 'PixelDust';
+	font-family: $body-font;
 }
 
 #sign-in-button {
 	position: fixed;
 	bottom: 91.5%;
 	left: 91%;
-	// margin-left: 45px;
+	margin-left: 2%;
 }
 
 .tagline {
@@ -45,7 +60,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 .title {
 	h1 {
-		font-family: 'PixelHour';
+		font-family: $header-font;
 		font-size: 185px;
 		margin-top: -5.5%;
 	}
