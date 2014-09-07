@@ -5,7 +5,7 @@
 
 // Load plugins
 var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
+    sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
@@ -21,7 +21,7 @@ var gulp = require('gulp'),
 // Styles
 gulp.task('css', function() {
   return gulp.src('assets/styles/scss/main.scss')
-    .pipe(sass({ style: 'expanded', }))
+    .pipe(sass())
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(gulp.dest('static/css/'))
     .pipe(rename({ suffix: '.min' }))
@@ -32,8 +32,8 @@ gulp.task('css', function() {
 
 // Compile copy and minify vendor styles
 gulp.task('cssven', function() {
-  return gulp.src('assets/styles/css/vendor/*.css', 'assets/styles/scss/vendor/*.scss')
-    .pipe(sass({ style: 'expanded', }))
+  return gulp.src(['assets/styles/css/vendor/*.css', 'assets/styles/scss/vendor/*.scss'])
+    .pipe(sass())
     .pipe(concat('vendor.css'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(minifycss())
@@ -94,7 +94,8 @@ gulp.task('watch', function() {
   gulp.watch('assets/styles/scss/*.scss', ['css']);
 
   //Watch vendor styles
-  gulp.watch('assets/styles/css/vendor/*.css', 'assets/styles/scss/vendor/*.scss', ['cssven']);
+  gulp.watch('assets/styles/css/vendor/*.css', ['cssven']);
+  gulp.watch('assets/styles/scss/vendor/*.scss', ['cssven']);
 
   // Watch my .js files
   gulp.watch('assets/scripts/**/*.js', ['js']);

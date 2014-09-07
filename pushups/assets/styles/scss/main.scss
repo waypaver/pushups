@@ -39,22 +39,22 @@ h1, h2, h3, h4, h5, h6, p {
 .tagline {
 	h1 {
 		font-size: 3rem;
-		margin-bottom: -170px;
+		letter-spacing: 3px;
 	}
 }
 
 .title {
-	font-size: 5rem;
-	margin-top: -70px;
 	h1 {
 		font-family: 'PixelHour';
+		font-size: 185px;
+		margin-top: -5.5%;
 	}
 }
 
 .start-group {
-	font-size: 2em;
+	// font-size: 2em;
 		h1, h3, h5 {
-			line-height: 0%;
+			line-height: 50%;
 		}
 		h3 {
 			letter-spacing: 3px;
@@ -71,6 +71,6 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 #chevron {
-	transform: 180(deg);
+	transform: rotate(180deg);
 	margin-top: -30px;
 }
