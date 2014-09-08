@@ -5,7 +5,7 @@ from twilio.twiml import Response
 from django.contrib import auth
 from django.core.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
-from forms import MyRegistrationForm
+# from forms import MyRegistrationForm
 
 # Create your views here.
 def index(request):
@@ -51,7 +51,7 @@ def register_user(request):
   args.update(csrf(request))
 
   args['form'] = MyRegistrationForm()
-  print args
+  print (args)
   return render_to_response('register.html', args)
 
 def register_success(request):
