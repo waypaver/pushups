@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
-
+from django_twilio.decorators import twilio_view
+from twilio.twiml import Response
 from django.contrib import auth
 from django.core.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
@@ -55,3 +56,10 @@ def register_user(request):
 
 def register_success(request):
   return render_to_response('register_success.html')
+
+@twilio_view
+def sms(request):
+  message = request.POST.get('Body', '')
+  r = Response()
+  r.message(message)
+  return r
