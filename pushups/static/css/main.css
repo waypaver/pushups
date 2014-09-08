@@ -1,14 +1,14 @@
 @font-face {
   font-family: 'PixelDust';
-  src: url('../..//fonts/pixeldu.eot');
-  src: url('../..//fonts/pixeldu.eot?#iefix') format('embedded-opentype'), url('../..//fonts/pixeldu.woff') format('woff'), url('../..//fonts/pixeldu.ttf') format('truetype'), url('../..//fonts/pixeldu.svg#PixelDust') format('svg');
+  src: url('../../static/fonts/pixeldu.eot');
+  src: url('../../static/fonts/pixeldu.eot?#iefix') format('embedded-opentype'), url('../../static/fonts/pixeldu.woff') format('woff'), url('../../static/fonts/pixeldu.ttf') format('truetype'), url('../../static/fonts/pixeldu.svg#PixelDust') format('svg');
   font-style: normal;
   font-weight: normal; }
 
 @font-face {
   font-family: 'PixelHour';
-  src: url('../..//fonts/PixelHour.eot');
-  src: url('../..//fonts/PixelHour.eot?#iefix') format('embedded-opentype'), url('../..//fonts/PixelHour.woff') format('woff'), url('../..//fonts/PixelHour.ttf') format('truetype'), url('../..//fonts/PixelHour.svg#PixelHour') format('svg');
+  src: url('../../static/fonts/PixelHour.eot');
+  src: url('../../static/fonts/PixelHour.eot?#iefix') format('embedded-opentype'), url('../../static/fonts/PixelHour.woff') format('woff'), url('../../static/fonts/PixelHour.ttf') format('truetype'), url('../../static/fonts/PixelHour.svg#PixelHour') format('svg');
   font-style: normal;
   font-weight: normal; }
 
