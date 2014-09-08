@@ -24,7 +24,7 @@ SECRET_KEY = '#-2+byiet=(7dd^k%*8=q%v^h^q)2ac+$)6i#@imx87vvxgxoo'
 DEBUG = True
 
 TEMPLATE_DEBUG = True
-TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'pushups/templates')]
 
 ALLOWED_HOSTS = ['*']
 
