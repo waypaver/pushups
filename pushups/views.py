@@ -1,16 +1,13 @@
 from django.shortcuts import render, HttpResponseRedirect, render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
-from django_twilio.decorators import twilio_view
-from twilio.twiml import Response
+
 from django.contrib import auth
 from django.core.context_processors import csrf
-from django.contrib.auth.forms import UserCreationForm
-# from forms import MyRegistrationForm
 
-# Create your views here.
-def index(request):
-  return render(request, 'main/index.html')
+def test_index(request):
+	return render(request, 'test_index.html')
 
+	
 #signin/login views
 
 def login(request):
@@ -38,28 +35,3 @@ def invalid_login(request):
 def logout(request):
   auth.logout(request)
   return render_to_response('logout.html')
-
-#user registration
-def register_user(request):
-  if request.method == 'POST':
-    form = MyRegistrationForm(request.POST)
-    if form.is_valid():
-      form.save()
-      return HttpResponseRedirect('/accounts/register_success')
-
-  args = {}
-  args.update(csrf(request))
-
-  args['form'] = MyRegistrationForm()
-  print (args)
-  return render_to_response('register.html', args)
-
-def register_success(request):
-  return render_to_response('register_success.html')
-
-@twilio_view
-def sms(request):
-  message = request.POST.get('Body', '')
-  r = Response()
-  r.message(message)
-  return r

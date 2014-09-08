@@ -12,8 +12,8 @@
 	}
 }
 
-@include fontFace('PixelDust','/fonts/pixeldu');
-@include fontFace('PixelHour','/fonts/PixelHour');
+@include fontFace('PixelDust','static/fonts/pixeldu');
+@include fontFace('PixelHour','static/fonts/PixelHour');
 
 //General
 $background-color-primary: #111111;
