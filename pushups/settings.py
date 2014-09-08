@@ -40,7 +40,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main'
+    'main',
+    'userprofile',
+    'phonenumber_field',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,3 +89,5 @@ USE_TZ = True
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(PROJECT_PATH, 'static')]
+
+AUTH_PROFILE_MODULE = 'userprofile.UserProfile'

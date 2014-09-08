@@ -8,6 +8,9 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', views.index, name='test_index'),
     url(r'^admin/', include(admin.site.urls)),
+
+    (r'^accounts/', include('userprofile.urls')),
+
     #user auth urls
     url(r'^accounts/login/$', 'main.views.login'),
     url(r'^accounts/auth/$', 'main.views.auth_view'),
