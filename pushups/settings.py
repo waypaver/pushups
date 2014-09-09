@@ -19,6 +19,8 @@ PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '#-2+byiet=(7dd^k%*8=q%v^h^q)2ac+$)6i#@imx87vvxgxoo'
+TWILIO_ACCOUNT_SID='AC1228449546e2367b274cc342487419dc'
+TWILIO_AUTH_TOKEN='b34cee3d99af7233b9e81dd885ad1e57'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
