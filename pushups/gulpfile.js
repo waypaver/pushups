@@ -3,6 +3,43 @@
  * $ npm install express gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev
  */
 
+var basePaths = {
+  src: 'assets/',
+  dest: 'static/',
+  depend: 'bower_compnenets/'
+};
+
+var paths = {
+  images: {
+    src: basePaths.src + 'img/',
+    dest: basePaths.dest + 'img/'
+  },
+  scripts: {
+    src: basePaths.src + 'js/',
+    dest: basePaths.dest + 'js/'
+  },
+  styles: {
+    src: basePaths.src + 'scss/',
+    dest: basePaths.dest + 'css/'
+  },
+  fonts: {
+    src: 'fonts/',
+    dest: 'fonts/'
+  }
+};
+
+//manually pulled dependencies - change source to bower when you get there
+var vendorPaths = {
+  scripts: {
+    src: paths.scripts.src + 'vendor/',
+    dest: paths.scripts.dest
+  },
+  styles: {
+    src: basePaths.src + 'css/vendor/',
+    dest: paths.styles.dest
+  }
+};
+
 // Load plugins
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
