@@ -9,11 +9,7 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='test_index'),
     url(r'^admin/', include(admin.site.urls)),
 
-<<<<<<< HEAD
-=======
     (r'^accounts/', include('userprofile.urls')),
-
->>>>>>> youser
     #user auth urls
     url(r'^accounts/login/$', 'main.views.login'),
     url(r'^accounts/auth/$', 'main.views.auth_view'),
