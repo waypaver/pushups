@@ -37,6 +37,6 @@ Now when you start foreman you should be able to use twilio
 
 ## Contributing
 
-1) Fork this repo
-2) Make your changes (with tests)
-3) Submit a Pull Request
+1 Fork this repo
+2 Make your changes (with tests)
+3 Submit a Pull Request
