@@ -3,12 +3,16 @@
  * $ npm install express gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev
  */
 
+ // Path and file variables
+
+// Duh, base paths
 var basePaths = {
   src: 'assets/',
-  dest: 'static/',
-  depend: 'bower_compnenets/'
+  dest: 'static/'
 };
 
+
+// Paths to file specific directories
 var paths = {
   images: {
     src: basePaths.src + 'img/',
@@ -28,17 +32,21 @@ var paths = {
   }
 };
 
-//manually pulled dependencies - change source to bower when you get there
-var vendorPaths = {
-  scripts: {
-    src: paths.scripts.src + 'vendor/',
-    dest: paths.scripts.dest
-  },
-  styles: {
-    src: basePaths.src + 'css/vendor/',
-    dest: paths.styles.dest
-  }
+var myFiles = {
+
 };
+
+//Vendor Dependencies (aka Bower in this case)
+// var vendorFiles = {
+//   scripts: {
+//     src: [basePaths.depend + ['**/*.js', '!.**/*.min.js']
+//     dest: paths.scripts.dest
+//   },
+//   styles: {
+//     src: [basePaths.depend + '']
+//     dest: paths.styles.dest
+//   }
+// };
 
 // Load plugins
 var gulp = require('gulp'),
@@ -53,6 +61,7 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
+    bowerFiles = require('bower-files'),
     del = require('del');
 
 // Styles
@@ -69,22 +78,21 @@ gulp.task('css', function() {
 
 // Compile copy and minify vendor styles
 gulp.task('cssven', function() {
-  return gulp.src(['assets/styles/css/vendor/*.css', 'assets/styles/scss/vendor/*.scss'])
+  // return gulp.src(['assets/styles/css/vendor/*.css', 'assets/styles/scss/vendor/*.scss'])
+  return gulp.src(bowerFiles.css)
     .pipe(sass())
-    .pipe(concat('vendor.css'))
-    .pipe(rename({ suffix: '.min' }))
+    .pipe(concat('vendor.min.css'))
     .pipe(minifycss())
     .pipe(gulp.dest('static/css/'))
     .pipe(notify({ message: 'That vendor SCSS & CSS shit is done'}))
-})
+});
 
 // Scripts
 gulp.task('js', function() {
   return gulp.src('assets/js/*.js')
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
-    .pipe(concat('main.js'))
-    .pipe(rename({ suffix: '.min' }))
+    .pipe(concat('main.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('static/js/'))
     .pipe(notify({ message: 'JS shit finished' }));
@@ -92,13 +100,12 @@ gulp.task('js', function() {
 
 // Copy and minify vendor javascript
 gulp.task('jsven', function() {
-  return gulp.src('assets/js/vendor/**')
-    .pipe(concat('vendor.js'))
-    .pipe(rename({ suffix: '.min' }))
+  return gulp.src(bowerFiles.js)
+    .pipe(concat('vendor.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('static/js/'))
     .pipe(notify({ message: 'JS vendor shit copied' }));
-})
+});
 
 // Images
 gulp.task('img', function() {
