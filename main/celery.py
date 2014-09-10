@@ -5,14 +5,12 @@ from django.conf import settings
 from twilio.rest import TwilioRestClient
 import datetime
 import celery
-from main.models import User, Workout
+#from main.models import User, Workout
 
-#export DJANGO_SETTINGS_MODULE='pushups.settings'
-#export REDIS_URL='redis://'
 #celery -A pushups worker -l info
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pushups.settings')
-app = Celery('pushups', include=['pushups.tasks'])
+app = Celery('pushups')
 app.config_from_object('django.conf:settings')
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
@@ -24,17 +22,13 @@ class Messager:
 	def sendMessage(self, recipientNumber, message):
 		self.twilioRestClient.messages.create(to="+1" + str(recipientNumber), from_="+14234029660", body=message)
 
-
-
-if __name__ == '__main__':
-	app.start()
-
-
-
 # messenger = Messager()
 # for user in User.objects.all():
 	# if user.active == True:
-		# messenger.sendMessage(user.phoneNumber, "Hello " + user.firstName)	
+		# messenger.sendMessage(4235673625, "Hello: " + user.firstName)	
+
+
+
 
 
 

@@ -10,7 +10,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-import djcelery
+# import djcelery
+# djcelery.setup()
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
@@ -31,10 +32,11 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'pushups/templates')]
 
 ALLOWED_HOSTS = ['*']
 
-CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
-CELERY_RESULT_BACKEND='djcelery.backends.cache:CacheBackend'
-BROKER_URL = 'django://'
-CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+CELERY_RESULT_BACKEND=os.environ['REDIS_URL']
+BROKER_URL=os.environ['REDIS_URL']
+# CELERY_RESULT_BACKEND=('djcelery.backends.database:DatabaseBackend', 'djcelery.backends.cache:CacheBackend',)
+# BROKER_URL = 'django://'
+# CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
