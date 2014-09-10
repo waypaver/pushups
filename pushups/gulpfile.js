@@ -6,35 +6,35 @@
  // Path and file variables
 
 // Duh, base paths
-var basePaths = {
-  src: 'assets/',
-  dest: 'static/'
-};
+// var basePaths = {
+//   src: 'assets/',
+//   dest: 'static/'
+// };
 
 
-// Paths to file specific directories
-var paths = {
-  images: {
-    src: basePaths.src + 'img/',
-    dest: basePaths.dest + 'img/'
-  },
-  scripts: {
-    src: basePaths.src + 'js/',
-    dest: basePaths.dest + 'js/'
-  },
-  styles: {
-    src: basePaths.src + 'scss/',
-    dest: basePaths.dest + 'css/'
-  },
-  fonts: {
-    src: 'fonts/',
-    dest: 'fonts/'
-  }
-};
+// // Paths to file specific directories
+// var paths = {
+//   images: {
+//     src: basePaths.src + 'img/',
+//     dest: basePaths.dest + 'img/'
+//   },
+//   scripts: {
+//     src: basePaths.src + 'js/',
+//     dest: basePaths.dest + 'js/'
+//   },
+//   styles: {
+//     src: basePaths.src + 'scss/',
+//     dest: basePaths.dest + 'css/'
+//   },
+//   fonts: {
+//     src: 'fonts/',
+//     dest: 'fonts/'
+//   }
+// };
 
-var myFiles = {
+// var myFiles = {
 
-};
+// };
 
 //Vendor Dependencies (aka Bower in this case)
 // var vendorFiles = {
@@ -61,8 +61,9 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
-    bowerFiles = require('bower-files'),
-    del = require('del');
+    del = require('del'),
+    bowerFiles = require('bower-files')()
+    ;
 
 // Styles
 gulp.task('css', function() {
@@ -79,12 +80,12 @@ gulp.task('css', function() {
 // Compile copy and minify vendor styles
 gulp.task('cssven', function() {
   // return gulp.src(['assets/styles/css/vendor/*.css', 'assets/styles/scss/vendor/*.scss'])
-  return gulp.src(bowerFiles.css)
+   return gulp.src(bowerFiles.css)
     .pipe(sass())
     .pipe(concat('vendor.min.css'))
     .pipe(minifycss())
     .pipe(gulp.dest('static/css/'))
-    .pipe(notify({ message: 'That vendor SCSS & CSS shit is done'}))
+    .pipe(notify({ message: 'That vendor SCSS & CSS shit is done'}));
 });
 
 // Scripts
@@ -123,7 +124,7 @@ gulp.task('copy_fonts', function() {
 
 // Clean
 gulp.task('clean', function(cb) {
-    del(['static/css/', 'static/js/', 'static/img/'], cb)
+    del(['static/css/', 'static/js/', 'static/img/'], cb);
 });
 
 // Default task

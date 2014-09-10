@@ -22,6 +22,11 @@
     "test",
     "tests"
   ],
+    "overrides": {
+    "modernizr": {
+      "main": "./modernizr.js"
+    }
+  },
   "dependencies": {
     "fullpage.js": "~2.2.1",
     "modernizr": "~2.8.3",

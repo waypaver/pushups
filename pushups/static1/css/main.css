@@ -15,8 +15,7 @@
 button.button {
   background-color: transparent;
   border-color: #02d602;
-  font-family: 'PixelDust';
-  border-style: solid; }
+  font-family: 'PixelDust'; }
   button.button:hover {
     background-color: #02d602;
     color: black; }
