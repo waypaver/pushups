@@ -50,8 +50,11 @@ If you want to work on the frontend do this stuff. If not you don't have to worr
 
 This will install all node dependencies listed in package.json including: bower, gulp, and all gulp plugins.
 
-You already have the Gulp config file aka gulpfile.js. I have configured it so you don't need to do anything it just works.
+3. Now type: bower install
 
+This will install all frontend dependencies listed in bower.json into bower_conponents. You know in case you need to look at them or something. They have already been concatenated in vendor.min.js and vendor.min.css.
+
+You already have the Gulp config file aka gulpfile.js. I have configured it so you don't need to do anything it just works.
 
 ### Here's what you need to know to actually edit files and see them update HTML.
 
