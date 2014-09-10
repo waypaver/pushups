@@ -1,54 +1,8 @@
 /*!
  * gulp
- * $ npm install express gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev
  */
 
- // Path and file variables
-
-// Duh, base paths
-// var basePaths = {
-//   src: 'assets/',
-//   dest: 'static/'
-// };
-
-
-// // Paths to file specific directories
-// var paths = {
-//   images: {
-//     src: basePaths.src + 'img/',
-//     dest: basePaths.dest + 'img/'
-//   },
-//   scripts: {
-//     src: basePaths.src + 'js/',
-//     dest: basePaths.dest + 'js/'
-//   },
-//   styles: {
-//     src: basePaths.src + 'scss/',
-//     dest: basePaths.dest + 'css/'
-//   },
-//   fonts: {
-//     src: 'fonts/',
-//     dest: 'fonts/'
-//   }
-// };
-
-// var myFiles = {
-
-// };
-
-//Vendor Dependencies (aka Bower in this case)
-// var vendorFiles = {
-//   scripts: {
-//     src: [basePaths.depend + ['**/*.js', '!.**/*.min.js']
-//     dest: paths.scripts.dest
-//   },
-//   styles: {
-//     src: [basePaths.depend + '']
-//     dest: paths.styles.dest
-//   }
-// };
-
-// Load plugins
+ // Load plugins
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
@@ -65,15 +19,50 @@ var gulp = require('gulp'),
     bowerFiles = require('bower-files')()
     ;
 
+ // Path and file variables
+
+// Duh, base paths
+var basePaths = {
+  src: 'assets/',
+  dest: 'static/'
+};
+
+// Paths to file specific directories
+var paths = {
+  images: {
+    src: basePaths.src + 'img/',
+    dest: basePaths.dest + 'img/'
+  },
+  scripts: {
+    src: basePaths.src + 'js/',
+    dest: basePaths.dest + 'js/'
+  },
+  styles: {
+    src: basePaths.src + '/scss/',
+    dest: basePaths.dest + 'css/'
+  },
+  fonts: {
+    src: basePaths.src + 'fonts/',
+    dest: basePaths.dest + 'fonts/'
+  }
+};
+
+// The asset files themselves!
+var myFiles = {
+  styles: paths.styles.src + '*.scss',
+  scripts: paths.scripts.src + '*.js',
+  images: paths.images.src + '*',
+  fonts: paths.fonts.src + '*'
+};
+
 // Styles
 gulp.task('css', function() {
-  return gulp.src('assets/styles/scss/main.scss')
+  return gulp.src(myFiles.styles)
     .pipe(sass())
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-    .pipe(gulp.dest('static/css/'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(minifycss())
-    .pipe(gulp.dest('static/css/'))
+    .pipe(gulp.dest(paths.styles.dest))
     .pipe(notify({ message: 'CSS shit done' }));
 });
 
@@ -84,18 +73,18 @@ gulp.task('cssven', function() {
     .pipe(sass())
     .pipe(concat('vendor.min.css'))
     .pipe(minifycss())
-    .pipe(gulp.dest('static/css/'))
+    .pipe(gulp.dest(paths.styles.dest))
     .pipe(notify({ message: 'That vendor SCSS & CSS shit is done'}));
 });
 
 // Scripts
 gulp.task('js', function() {
-  return gulp.src('assets/js/*.js')
+  return gulp.src(myFiles.scripts)
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(concat('main.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('static/js/'))
+    .pipe(gulp.dest(paths.scripts.dest))
     .pipe(notify({ message: 'JS shit finished' }));
 });
 
@@ -104,27 +93,27 @@ gulp.task('jsven', function() {
   return gulp.src(bowerFiles.js)
     .pipe(concat('vendor.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('static/js/'))
+    .pipe(gulp.dest(paths.scripts.dest))
     .pipe(notify({ message: 'JS vendor shit copied' }));
 });
 
 // Images
 gulp.task('img', function() {
-  return gulp.src('assets/img/**/*')
+  return gulp.src(myFiles.images)
     .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
-    .pipe(gulp.dest('static/img/'))
+    .pipe(gulp.dest(paths.images.dest))
     .pipe(notify({ message: 'Image shit complete' }));
 });
 
 // Fonts
 gulp.task('copy_fonts', function() {
-  gulp.src('assets/fonts/*')
-  .pipe(gulp.dest('static/fonts/'));
+  gulp.src(myFiles.fonts)
+  .pipe(gulp.dest(paths.fonts.dest));
 });
 
 // Clean
 gulp.task('clean', function(cb) {
-    del(['static/css/', 'static/js/', 'static/img/'], cb);
+    del([paths.styles.dest, paths.scripts.dest, paths.images.dest], cb);
 });
 
 // Default task
@@ -136,28 +125,28 @@ gulp.task('default', ['clean'], function() {
 gulp.task('watch', function() {
 
   // Watch my .scss files
-  gulp.watch('assets/styles/scss/*.scss', ['css']);
+  gulp.watch(myFiles.styles, ['css']);
 
   //Watch vendor styles
-  gulp.watch('assets/styles/css/vendor/*.css', ['cssven']);
-  gulp.watch('assets/styles/scss/vendor/*.scss', ['cssven']);
+  gulp.watch(bowerFiles.css, ['cssven']);
+  // gulp.watch('assets/styles/scss/vendor/*.scss', ['cssven']);
 
   // Watch my .js files
-  gulp.watch('assets/scripts/**/*.js', ['js']);
+  gulp.watch(myFiles.scripts, ['js']);
 
   // Watch .js vendor files
-  gulp.watch('assets/scripts/vendor/*.js', ['jsven']);
+  gulp.watch(bowerFiles.js, ['jsven']);
 
   // Watch image files
-  gulp.watch('assets/images/**/*', ['img']);
+  gulp.watch(paths.images.src + '**/*', ['img']);
 
   //Watch fonts
-  gulp.watch('assets/fonts/*.{ttf,woff,eof,svg}', ['copy_fonts']);
+  gulp.watch(paths.fonts.src + '*.{ttf,woff,eof,svg}', ['copy_fonts']);
 
   // Create LiveReload server
   livereload.listen();
 
   // Watch any files in static/, reload on change
-  gulp.watch(['static/**']).on('change', livereload.changed);
+  gulp.watch([basePaths.dest + '**']).on('change', livereload.changed);
 
 });
