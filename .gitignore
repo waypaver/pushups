@@ -62,7 +62,10 @@ docs/_build/
 target/
 
 # Node Modules
-node_modules/
+pushups/node_modules/
+
+# Bower Dependencies
+pushups/bower_components/
 
 # Sass cache
 .sass-cache/

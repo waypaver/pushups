@@ -27,6 +27,8 @@ button.button {
 	background-color: transparent;
 	border-color: $primary-font-color;
 	font-family: $body-font;
+	border-style: outset;
+	border-width: 3px;
 	&:hover {
 		background-color: $primary-font-color;
 		color: black;
