@@ -35,12 +35,6 @@ to our .env file.
 
 Now when you start foreman you should be able to use twilio
 
-## Contributing
-
-1. Fork this repo
-2. Make your changes (with tests)
-3. Submit a Pull Request
-
 ## Working on the frontend
 
 If you want to work on the frontend do this stuff. If not you don't have to worry about what follows.
@@ -77,5 +71,13 @@ If you add frontend libraries with bower install libraryname --save gulp will ta
 Same thing goes for editing or adding files in pushups/pushups/assets. Gulp is watching and will update the files in pushups/pushups/static (where Django is looking for files and where I have edited the base.html file to look for static files). 
 
 ***No need to add any sources to the HTML as all files are concatenated into main.min.css, vendor.min.css, main.min.js, and vendor.min.js.
+
+## Contributing
+
+1. Fork this repo
+2. Make your changes (with tests)
+3. Submit a Pull Request
+
+
 
 
