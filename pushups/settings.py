@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from datetime import timedelta
-# import djcelery
-# djcelery.setup()
+import celery
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
@@ -54,7 +55,9 @@ INSTALLED_APPS = (
     'main',
     'userprofile',
     'phonenumber_field',
+    'kombu.transport.django',  
     'djcelery',
+    'django_crontab',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -95,19 +98,27 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-CELERYBEAT_SCHEDULE = {
-    'add-every-30-seconds': {
-        'task': 'pushups.celery.test_sms',
-        'schedule': timedelta(seconds=30),
-        'args': ()
-    },
-}
+# CELERYBEAT_SCHEDULE = {
+#     'add-every-monday-morning': {
+#         'task': 'pushups.celery.test_sms',
+#         'schedule': crontab(hour=13, minute='12,14,16,18,20,22,24'),
+#         'args': (),
+#     },
+# }
 
-CELERY_TIMEZONE = 'UTC'
+# CELERYBEAT_SCHEDULE = {
+#     'add-every-30-seconds': {
+#         'task': 'pushups.celery.test_sms',
+#         'schedule': timedelta(seconds=30),
+#         'args': ()
+#     },
+# }
+
+# CELERY_TIMEZONE = 'EST'
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'EST'
 
 USE_I18N = True
 

@@ -5,6 +5,7 @@ from twilio.twiml import Response
 from django.contrib import auth
 from django.core.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
+from main.models import User, Workout
 # from forms import MyRegistrationForm
 
 # Create your views here.
@@ -59,7 +60,17 @@ def register_success(request):
 
 @twilio_view
 def sms(request):
-  message = request.POST.get('Body', '')
+  numberOfPushups = request.POST.get('Body', 0)
+  incomingNumber = request.POST.get('From', 0)[2:]
+  user = User.objects.get(phoneNumber=incomingNumber)
+  workout = Workout.objects.get(participantID=user,status="pending")
+  workout.score = numberOfPushups
+  workout.status = "completed"
+  workout.save()
   r = Response()
-  r.message(message)
   return r
+
+  # message = request.POST.get('Body', '')
+  # r = Response()
+  # r.message(message)
+  # return r
