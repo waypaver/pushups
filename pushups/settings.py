@@ -10,9 +10,14 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from datetime import timedelta
+import celery
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pushups.settings')
+os.environ.setdefault('REDIS_URL', 'redis://')
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -26,6 +31,12 @@ TEMPLATE_DEBUG = True
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'pushups/templates','django.template.loaders.app_directories.Loader',)]
 
 ALLOWED_HOSTS = ['*']
+
+CELERY_RESULT_BACKEND=os.environ['REDIS_URL']
+BROKER_URL=os.environ['REDIS_URL']
+# CELERY_RESULT_BACKEND=('djcelery.backends.database:DatabaseBackend', 'djcelery.backends.cache:CacheBackend',)
+# BROKER_URL = 'django://'
+# CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -43,6 +54,9 @@ INSTALLED_APPS = (
     'main',
     'userprofile',
     'phonenumber_field',
+    'kombu.transport.django',  
+    'djcelery',
+    'django_crontab',
     'registration',
     'django.contrib.sites',
 )
@@ -66,13 +80,6 @@ WSGI_APPLICATION = 'pushups.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 
-# DATABASES = {
-    # 'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -85,9 +92,11 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
+# CELERY_TIMEZONE = 'EST'
+
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'EST'
 
 USE_I18N = True
 
