@@ -13,6 +13,8 @@ import os
 from datetime import timedelta
 import celery
 
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pushups.settings')
+os.environ.setdefault('REDIS_URL', 'redis://')
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))

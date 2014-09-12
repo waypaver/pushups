@@ -9,7 +9,7 @@ from main.models import User, Workout
 from celery.schedules import crontab
 from celery.task import periodic_task
 
-#osascript -e 'tell application "Terminal" to activate' -e 'tell application "System Events" to tell process "Terminal" to keystroke "t" using command down'
+#DON'T FORGET TO RUN POSTGRESQL APP!!!
 #export DJANGO_SETTINGS_MODULE='pushups.settings'
 #export REDIS_URL='redis://'
 #redis-server
@@ -18,6 +18,8 @@ from celery.task import periodic_task
 
 #ps aux | grep -i manage
 #kill -9 pid
+
+#osascript -e 'tell application "Terminal" to activate' -e 'tell application "System Events" to tell process "Terminal" to keystroke "t" using command down'
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pushups.settings')
@@ -64,7 +66,7 @@ def sendTexts():
 			newWorkout.dateTimeStarted = datetime.datetime.now()
 			newWorkout.save()
 			messenger = Messenger()
-			messenger.sendMessage(user.phoneNumber, user.firstName + ", time for pushups! Text me back how many you did.")
+			messenger.sendMessage(user.phoneNumber, user.firstName + ", time for pushups! In the next 5 minutes, text back how many pushups you did.")
 
 
 @app.task
@@ -76,17 +78,6 @@ def closeWorkouts():
 
 if __name__ == '__main__':
 	app.start()
-
-
-
-
-
-# messenger = Messenger()
-# for user in User.objects.all():
-	# if user.active == True:
-		# messenger.sendMessage(user.phoneNumber, "Hello " + user.firstName)	
-
-
 
 
 
