@@ -17,8 +17,7 @@ PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#-2+byiet=(7dd^k%*8=q%v^h^q)2ac+$)6i#@imx87vvxgxoo'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
