@@ -1,0 +1,18 @@
+body{
+	background-image: url('pushupMock2.png');
+	display:-webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-box-flex: 1;
+
+}
+#chart_div{
+	 display:block;
+   /* margin-left: auto;*/
+    /*margin-right: auto;*/
+    width: 7em;
+    opacity: .9;
+    background-color: green;
+    border: blue;
+    
+
+}
