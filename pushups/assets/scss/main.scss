@@ -29,53 +29,177 @@ button.button {
 	font-family: $body-font;
 	border-style: outset;
 	border-width: 3px;
+	color: white;
+	margin: 0px;
+	text-align: center;
+	transition: all .3s ease;
 	&:hover {
 		background-color: $primary-font-color;
 		color: black;
+		transition: all .3s ease;
 	}
 }
 
 body {
 	background-color: $background-color-primary;
-	font-size: 100%;
 }
 
 h1, h2, h3, h4, h5, h6, p {
 	color: $primary-font-color;
 	text-align: center;
 	font-family: $body-font;
+	font-weight: normal;
 }
 
-#sign-in-button {
+@media (min-width: 400px) {
+
+	#sign-in-button {
+	position: fixed;
+	bottom: 91.5%;
+	left: 45%;
+	padding-left: 8px;
+}
+
+	.tagline {
+		h1 {
+			font-size: 0.5rem;
+			letter-spacing: 3px;
+		}
+	}
+
+	.title {
+		h1 {
+			font-family: $header-font;
+			font-size: 85px;
+			margin-top: -4%;
+		}
+	}
+
+	.start-group {
+		font-size: 1em;
+			h1, h3, h5 {
+				line-height: 10%;
+			}
+			h3 {
+				letter-spacing: 3px;
+			}
+	}
+}
+
+@media (min-width: 486px) {
+
+	#sign-in-button {
+	position: fixed;
+	bottom: 91.5%;
+	left: 46.5%;
+	padding-left: 8px;
+}
+
+	.tagline {
+		h1 {
+			font-size: 1.2rem;
+			letter-spacing: 3px;
+		}
+	}
+
+	.title {
+		h1 {
+			font-family: $header-font;
+			font-size: 85px;
+			margin-top: -4%;
+		}
+	}
+
+	.start-group {
+		font-size: 1em;
+			h1, h3, h5 {
+				line-height: 10%;
+			}
+			h3 {
+				letter-spacing: 3px;
+			}
+	}
+}
+
+@media (min-width: 800px) {
+
+	#sign-in-button {
 	position: fixed;
 	bottom: 91.5%;
 	left: 91%;
 	margin-left: 2%;
+	padding-left: 8px;
 }
 
-.tagline {
-	h1 {
-		font-size: 3rem;
-		letter-spacing: 3px;
-	}
-}
-
-.title {
-	h1 {
-		font-family: $header-font;
-		font-size: 185px;
-		margin-top: -4%;
-	}
-}
-
-.start-group {
-	// font-size: 2em;
-		h1, h3, h5 {
-			line-height: 50%;
-		}
-		h3 {
+	.tagline {
+		h1 {
+			font-size: 2.1rem;
 			letter-spacing: 3px;
 		}
+	}
+
+	.title {
+		h1 {
+			font-family: $header-font;
+			font-size: 135px;
+			margin-top: -4%;
+		}
+	}
+
+	.start-group {
+		font-size: 1.5em;
+			h1, h3, h5 {
+				line-height: 10%;
+			}
+			h3 {
+				letter-spacing: 3px;
+			}
+	}
+}
+
+@media (min-width: 1056px) {
+
+	#sign-in-button {
+	position: fixed;
+	bottom: 91.5%;
+	left: 91%;
+	margin-left: 2%;
+	padding-left: 8px;
+}
+
+	.tagline {
+		h1 {
+			font-size: 2.9rem;
+			letter-spacing: 3px;
+		}
+	}
+
+	.title {
+		h1 {
+			font-family: $header-font;
+			font-size: 185px;
+			margin-top: -4%;
+		}
+	}
+
+	.start-group {
+		font-size: 1.5em;
+			h1, h3, h5 {
+				line-height: 10%;
+			}
+			h3 {
+				letter-spacing: 3px;
+			}
+	}
+}
+
+.center {
+	text-align: center;
+}
+
+#to-action {
+	padding: 25px 45px 25px 50px;
+	font-size: 25px;
 }
 
 .scroll-down {
