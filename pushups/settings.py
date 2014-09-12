@@ -24,8 +24,6 @@ PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '#-2+byiet=(7dd^k%*8=q%v^h^q)2ac+$)6i#@imx87vvxgxoo'
-TWILIO_ACCOUNT_SID='AC1228449546e2367b274cc342487419dc'
-TWILIO_AUTH_TOKEN='b34cee3d99af7233b9e81dd885ad1e57'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -83,13 +81,6 @@ WSGI_APPLICATION = 'pushups.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 
-# DATABASES = {
-    # 'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -101,22 +92,6 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
-
-# CELERYBEAT_SCHEDULE = {
-#     'add-every-monday-morning': {
-#         'task': 'pushups.celery.test_sms',
-#         'schedule': crontab(hour=13, minute='12,14,16,18,20,22,24'),
-#         'args': (),
-#     },
-# }
-
-# CELERYBEAT_SCHEDULE = {
-#     'add-every-30-seconds': {
-#         'task': 'pushups.celery.test_sms',
-#         'schedule': timedelta(seconds=30),
-#         'args': ()
-#     },
-# }
 
 # CELERY_TIMEZONE = 'EST'
 
