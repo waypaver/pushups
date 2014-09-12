@@ -1,0 +1,36 @@
+{
+  "name": "pushups-depends",
+  "version": "1.0.0",
+  "homepage": "https://github.com/waypaver/pushups",
+  "authors": [
+    "Brett Wise <brettdwise@gmail.com>"
+  ],
+  "description": "These are the vendor dependencies you are seeking.",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "project-dependencies",
+    "depends"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+    "overrides": {
+    "modernizr": {
+      "main": "./modernizr.js"
+    }
+  },
+  "dependencies": {
+    "fullpage.js": "~2.2.1",
+    "modernizr": "~2.8.3",
+    "foundation": "~5.4.3",
+    "animate.css": "~3.2.0"
+  }
+}

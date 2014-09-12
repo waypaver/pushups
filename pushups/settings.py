@@ -31,7 +31,7 @@ TWILIO_AUTH_TOKEN='b34cee3d99af7233b9e81dd885ad1e57'
 DEBUG = True
 
 TEMPLATE_DEBUG = True
-TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'pushups/templates')]
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'pushups/templates','django.template.loaders.app_directories.Loader',)]
 
 ALLOWED_HOSTS = ['*']
 
@@ -43,7 +43,7 @@ BROKER_URL=os.environ['REDIS_URL']
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-
+SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = (
@@ -60,6 +60,8 @@ INSTALLED_APPS = (
     'kombu.transport.django',  
     'djcelery',
     'django_crontab',
+    'registration',
+    'django.contrib.sites',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -134,4 +136,20 @@ USE_TZ = True
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(PROJECT_PATH, 'static')]
-AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
+#AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
+
+#email verif. stuff
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_EMAIL_SUBJECT_PREFIX = '[Pushups App Registration]'
+SEND_ACTIVATION_EMAIL = True
+REGISTRATION_AUTO_LOGIN = False
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'SGT@pushups.com'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
