@@ -21,7 +21,7 @@ PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
-
+SECRET_KEY='3rhb%g-=hh^9bo!w)v*x(d35ft&33qsa2v44_47v7eo8hh#53j'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -34,9 +34,6 @@ ALLOWED_HOSTS = ['*']
 
 CELERY_RESULT_BACKEND=os.environ['REDIS_URL']
 BROKER_URL=os.environ['REDIS_URL']
-# CELERY_RESULT_BACKEND=('djcelery.backends.database:DatabaseBackend', 'djcelery.backends.cache:CacheBackend',)
-# BROKER_URL = 'django://'
-# CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -54,8 +51,7 @@ INSTALLED_APPS = (
     'main',
     'userprofile',
     'phonenumber_field',
-    'kombu.transport.django',  
-    'djcelery',
+    'kombu.transport.django',
     'django_crontab',
     'registration',
     'django.contrib.sites',
@@ -110,7 +106,7 @@ USE_TZ = True
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(PROJECT_PATH, 'static')]
-#AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
+AUTH_PROFILE_MODULE = 'main.UserProfile'
 
 #email verif. stuff
 ACCOUNT_ACTIVATION_DAYS = 7

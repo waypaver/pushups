@@ -28,8 +28,8 @@ app.conf.CELERYBEAT_SCHEDULE = {
     },
 }
 
-import djcelery
-djcelery.setup_loader()
+#import djcelery
+#djcelery.setup_loader()
 
 class Messenger:
 	def __init__(self):

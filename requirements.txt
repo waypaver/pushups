@@ -6,6 +6,7 @@ billiard==3.3.0.18
 celery==3.1.13
 dj-database-url==0.3.0
 dj-static==0.0.6
+django-crontab==0.5.1
 django-phonenumber-field==0.6
 django-registration==1.0
 django-toolbelt==0.0.1
